@@ -55,6 +55,30 @@ describe Feature do
       feature.tags.first.should be_instance_of(Tag)
     end
   end
+
+  describe 'scenarios' do
+    it "should have an empty list of scenarios" do
+      Feature.new.scenarios.should == []
+    end
+
+    it "should contain a scenario added to it" do
+      scenario = Scenario.new
+      feature = Feature.new
+      feature.scenarios << scenario
+      feature.scenarios.should == [scenario]
+    end
+
+    it "should contain all scenarios added to it" do
+      scenario1 = Scenario.new()
+      scenario2 = Scenario.new()
+      scenario3 = Scenario.new()
+      feature = Feature.new
+      feature.scenarios << scenario1
+      feature.scenarios << scenario3
+      feature.scenarios << scenario2
+      feature.scenarios.should include(scenario1, scenario2, scenario3)
+    end
+  end
 end
 
 # EOF

@@ -16,9 +16,11 @@ module CucumberSkin
 
   class Feature
     attr_accessor :tags
+    attr_accessor :scenarios
 
     def initialize
       @tags = TagSet.new
+      @scenarios = []
     end
 
   end
