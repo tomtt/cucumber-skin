@@ -5,4 +5,11 @@ require File.expand_path(
 
 # Put your code here
 
+# cuke_dir = File.dirname(__FILE__ + '.rb') + '/../lib'
+cuke_dir = '/Users/tomtt/created/project/externals/cucumber/lib'
+$:.unshift(cuke_dir) unless $:.include?(cuke_dir)
+
+require 'cucumber/cli/main'
+Cucumber::Cli::Main.execute(ARGV.dup)
+
 # EOF
