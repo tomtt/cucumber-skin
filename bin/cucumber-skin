@@ -10,6 +10,10 @@ cuke_dir = '/Users/tomtt/created/project/externals/cucumber/lib'
 $:.unshift(cuke_dir) unless $:.include?(cuke_dir)
 
 require 'cucumber/cli/main'
+
+unless ARGV.include?("-f") || ARGV.include?("--format")
+  ARGV.unshift("-f", "CucumberSkin::Formatter::HtmlFiles")
+end
 Cucumber::Cli::Main.execute(ARGV.dup)
 
 # EOF
