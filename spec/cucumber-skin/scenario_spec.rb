@@ -61,6 +61,30 @@ describe Scenario do
       Tag.instance('string_tag').things_tagged.should include(scenario)
     end
   end
+
+  describe 'steps' do
+    it "should have an empty list of steps" do
+      Scenario.new.steps.should == []
+    end
+
+    it "should contain a step added to it" do
+      step = Step.new
+      scenario = Scenario.new
+      scenario.steps << step
+      scenario.steps.should == [step]
+    end
+
+    it "should contain all steps added to it" do
+      step1 = Step.new()
+      step2 = Step.new()
+      step3 = Step.new()
+      scenario = Scenario.new
+      scenario.steps << step1
+      scenario.steps << step3
+      scenario.steps << step2
+      scenario.steps.should include(step1, step2, step3)
+    end
+  end
 end
 
 # EOF
