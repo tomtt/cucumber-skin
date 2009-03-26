@@ -9,7 +9,7 @@ include CucumberSkin::Gatherer
 
 describe ResultsGatherer do
   it "should inherit from the cucumber ast visitor" do
-    ResultsGatherer.new(:step_mother).should be_a(Cucumber::Ast::Visitor)
+    ResultsGatherer.new(:step_mother, {}).should be_a(Cucumber::Ast::Visitor)
   end
 end
 
