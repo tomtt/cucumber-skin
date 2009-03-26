@@ -13,12 +13,21 @@ module CucumberSkin
       @string
     end
 
+    def things_tagged
+      @things_tagged.uniq
+    end
+
+    def tag(thing)
+      @things_tagged << thing
+    end
+
     private_class_method :new
 
     private
 
     def initialize(string)
       @string = string
+      @things_tagged = []
     end
   end
 end
