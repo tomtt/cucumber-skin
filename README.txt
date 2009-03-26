@@ -9,6 +9,11 @@ A cucumber formatter that generates html files to present test results
 == FEATURES/PROBLEMS:
 
 * FIXME (list of features or problems)
+* TODO
+  * Parse options
+    * Output directory
+    * Configuration yml file
+  * Serialization
 
 == SYNOPSIS:
 
