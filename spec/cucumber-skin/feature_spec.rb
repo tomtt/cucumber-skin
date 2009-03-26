@@ -14,16 +14,16 @@ describe Feature do
     end
 
     it "should contain a tag added to it" do
-      tag = Tag.new('some tag')
+      tag = Tag.instance('some tag')
       feature = Feature.new
       feature.tags << tag
       feature.tags.should == [tag]
     end
 
     it "should contain all tags added to it" do
-      tag1 = Tag.new('some tag')
-      tag2 = Tag.new('some other tag')
-      tag3 = Tag.new('last tag')
+      tag1 = Tag.instance('some tag')
+      tag2 = Tag.instance('some other tag')
+      tag3 = Tag.instance('last tag')
       feature = Feature.new
       feature.tags << tag1
       feature.tags << tag3
@@ -32,7 +32,7 @@ describe Feature do
     end
 
     it "can not contain a certain tag more than once" do
-      tag = Tag.new('some tag')
+      tag = Tag.instance('some tag')
       feature = Feature.new
       feature.tags << tag
       feature.tags << tag
@@ -41,7 +41,7 @@ describe Feature do
 
     # This works out of the box, but just put this here to be sure
     it "can not contain a tag with an identical string more than once" do
-      tag1 = Tag.new('some tag')
+      tag1 = Tag.instance('some tag')
       tag2 = 'some tag'
       feature = Feature.new
       feature.tags << tag1

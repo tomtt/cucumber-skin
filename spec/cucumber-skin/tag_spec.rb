@@ -8,15 +8,25 @@ require File.join(File.dirname(__FILE__), %w[ .. spec_helper])
 include CucumberSkin
 
 describe Tag do
-  it "should have the string it was initialized with as its label" do
-    Tag.new('some_tag').label.should == 'some_tag'
+  it "should not have a public initialize method" do
+    lambda { Tag.new('whatever') }.should raise_error(NoMethodError)
   end
 
-  # This works out of the box, but just put this here to be sure
-  it "should be identical if its label is identical" do
-    tag1 = Tag.new('some tag')
-    tag2 = Tag.new('some tag')
-    tag1.should == tag2
+  it "should return a tag instance from a string" do
+    Tag.instance('some_tag').should be_instance_of(Tag)
+  end
+
+  it "should return a tag instance from a string which converts to that string" do
+    Tag.instance('some_tag').to_s.should === 'some_tag'
+  end
+
+  it "should return identical tags for equal strings" do
+    Tag.instance('some_tag').should be_equal(Tag.instance('some_tag'))
+  end
+
+  it "should return identical tags when created from a tag or a string" do
+    tag = Tag.instance('some_tag')
+    Tag.instance(tag).should be_equal(tag)
   end
 end
 

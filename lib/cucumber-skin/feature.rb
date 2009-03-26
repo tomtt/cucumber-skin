@@ -5,11 +5,9 @@ module CucumberSkin
     alias_method :original_append, :<<
 
     def <<(elem)
-      unless(Tag === elem)
-        elem = Tag.new(elem)
-      end
-      unless include?(elem)
-        self.original_append(elem)
+      tag = Tag.instance(elem)
+      unless include?(tag)
+        self.original_append(tag)
       end
     end
   end
