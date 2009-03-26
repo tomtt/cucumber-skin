@@ -54,6 +54,12 @@ describe Feature do
       feature.tags << 'string_tag'
       feature.tags.first.should be_instance_of(Tag)
     end
+
+    it "should tag itself with the tag if a tag is added to it" do
+      feature = Feature.new
+      feature.tags << 'string_tag'
+      Tag.instance('string_tag').things_tagged.should include(feature)
+    end
   end
 
   describe 'scenarios' do

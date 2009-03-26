@@ -1,11 +1,16 @@
 module CucumberSkin
-  class TagSet < Array
+  class FeatureTagSet < Array
     # I chose to inherit from an Array in stead of a Set because an array is
     # more transparant to code with (returns [] when empty for example)
     alias_method :original_append, :<<
 
+    def initialize(feature)
+      @feature = feature
+    end
+
     def <<(elem)
       tag = Tag.instance(elem)
+      tag.tag(@feature)
       unless include?(tag)
         self.original_append(tag)
       end
@@ -17,7 +22,7 @@ module CucumberSkin
     attr_accessor :scenarios
 
     def initialize
-      @tags = TagSet.new
+      @tags = FeatureTagSet.new(self)
       @scenarios = []
     end
 
