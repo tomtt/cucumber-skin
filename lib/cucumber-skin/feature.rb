@@ -10,8 +10,8 @@ module CucumberSkin
 
     def <<(elem)
       tag = Tag.instance(elem)
-      tag.tag(@feature)
       unless include?(tag)
+        tag.tag(@feature)
         self.original_append(tag)
       end
     end
