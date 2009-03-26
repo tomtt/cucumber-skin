@@ -1,33 +1,35 @@
 require 'singleton'
 
 module CucumberSkin
-  class Tag
-    @@tags = {}
+  module Gatherer
+    class Tag
+      @@tags = {}
 
-    def self.instance(tag)
-      string = tag.to_s
-      @@tags[string] ||= Tag.send(:new, string)
-    end
+      def self.instance(tag)
+        string = tag.to_s
+        @@tags[string] ||= Tag.send(:new, string)
+      end
 
-    def to_s
-      @string
-    end
+      def to_s
+        @string
+      end
 
-    def things_tagged
-      @things_tagged.uniq
-    end
+      def things_tagged
+        @things_tagged.uniq
+      end
 
-    def tag(thing)
-      @things_tagged << thing
-    end
+      def tag(thing)
+        @things_tagged << thing
+      end
 
-    private_class_method :new
+      private_class_method :new
 
-    private
+      private
 
-    def initialize(string)
-      @string = string
-      @things_tagged = []
+      def initialize(string)
+        @string = string
+        @things_tagged = []
+      end
     end
   end
 end

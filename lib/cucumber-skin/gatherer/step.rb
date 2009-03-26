@@ -1,5 +1,7 @@
 module CucumberSkin
-  # class Step < Struct.new(:keyword, :step_match, :status, :source_indent, :background)
-  class Step
+  module Gatherer
+    # class Step < Struct.new(:keyword, :step_match, :status, :source_indent, :background)
+    class Step
+    end
   end
 end

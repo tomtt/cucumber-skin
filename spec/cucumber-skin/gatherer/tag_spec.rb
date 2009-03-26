@@ -5,7 +5,7 @@
 require File.join(File.dirname(__FILE__), %w[ .. .. spec_helper])
 
 # No need to type CucumberSkin:: before each call
-include CucumberSkin
+include CucumberSkin::Gatherer
 
 describe Tag do
   it "should not have a public initialize method" do

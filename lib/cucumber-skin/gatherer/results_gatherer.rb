@@ -1,6 +1,8 @@
 require 'cucumber'
 
 module CucumberSkin
-  class ResultsGatherer < Cucumber::Ast::Visitor
+  module Gatherer
+    class ResultsGatherer < Cucumber::Ast::Visitor
+    end
   end
 end
