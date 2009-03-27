@@ -1,19 +1,10 @@
 #!/usr/bin/env ruby
+# Add '.rb' to work around a bug in IronRuby's File#dirname
 
-require File.expand_path(
-    File.join(File.dirname(__FILE__), %w[.. lib cucumber-skin]))
+_cuke_skin_dir = File.dirname(__FILE__ + '.rb') + '/../lib'
+$:.unshift(_cuke_skin_dir) unless $:.include?(_cuke_skin_dir)
 
-# Put your code here
-
-# cuke_dir = File.dirname(__FILE__ + '.rb') + '/../lib'
-cuke_dir = '/Users/tomtt/created/project/externals/cucumber/lib'
-$:.unshift(cuke_dir) unless $:.include?(cuke_dir)
-
-require 'cucumber/cli/main'
-
-unless ARGV.include?("-f") || ARGV.include?("--format")
-  ARGV.unshift("-f", "CucumberSkin::Formatter::HtmlFiles")
-end
-Cucumber::Cli::Main.execute(ARGV.dup)
+require 'cucumber-skin/cli/main'
+CucumberSkin::Cli::Main.execute(ARGV.dup)
 
 # EOF
