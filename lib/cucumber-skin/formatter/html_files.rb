@@ -1,4 +1,5 @@
 require 'cucumber'
+require 'cucumber-skin/gatherer/results_gatherer'
 
 module CucumberSkin
   module Formatter

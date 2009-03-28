@@ -1,3 +1,7 @@
+_cuke_skin_dir = File.dirname(__FILE__ + '.rb') + '/../lib'
+$:.unshift(_cuke_skin_dir) unless
+  $:.include?(_cuke_skin_dir) ||
+  $:.include?(File.expand_path(_cuke_skin_dir))
 
 module CucumberSkin
 
